@@ -1,7 +1,0 @@
-.model UNO1BIT
-
-.outputs uscita
-.names uscita
-1
-
-.end

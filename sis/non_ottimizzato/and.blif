@@ -1,9 +1,0 @@
-.model AND
-
-.inputs a b
-.outputs x
-
-.names a b x
-11 1
-
-.end
