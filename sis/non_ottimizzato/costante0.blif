@@ -1,0 +1,6 @@
+.model ZERO1BIT
+
+.outputs uscita
+.names uscita
+
+.end

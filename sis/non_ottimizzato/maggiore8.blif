@@ -1,0 +1,28 @@
+.model MAGGIORE8
+
+.inputs a7 a6 a5 a4 a3 a2 a1 a0 b7 b6 b5 b4 b3 b2 b1 b0
+.outputs vero
+
+.subckt XOR a=a7 b=b7 x=x7
+.subckt XOR a=a6 b=b6 x=x6
+.subckt XOR a=a5 b=b5 x=x5
+.subckt XOR a=a4 b=b4 x=x4
+.subckt XOR a=a3 b=b3 x=x3
+.subckt XOR a=a2 b=b2 x=x2
+.subckt XOR a=a1 b=b1 x=x1
+.subckt XOR a=a0 b=b0 x=x0
+
+.names a7 a6 a5 a4 a3 a2 a1 a0 x7 x6 x5 x4 x3 x2 x1 x0 vero
+1-------1------- 1
+-1------01------ 1
+--1-----001----- 1
+---1----0001---- 1
+----1---00001--- 1
+-----1--000001-- 1
+------1-0000001- 1
+-------100000001 1
+
+.search xor.blif
+
+.end
+
