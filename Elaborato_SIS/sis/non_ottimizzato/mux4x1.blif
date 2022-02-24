@@ -1,0 +1,14 @@
+.model MUX4x1
+
+#mux a 4 ingressi, 1 bit ciascuno
+
+.inputs s1 s0 i3 i2 i1 i0
+.outputs out
+
+.names s1 s0 i3 i2 i1 i0 out
+001--- 1   #se selettore è 00, dai in uscita i3
+01-1-- 1   #se selettore è 01, dai in uscita i2
+10--1- 1   #se selettore è 10, dai in uscita i1
+11---1 1   #se selettore è 11, dai in uscita i0
+
+.end

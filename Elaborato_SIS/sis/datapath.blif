@@ -1,0 +1,177 @@
+.model DATAPATH
+.inputs pH7 pH6 pH5 pH4 pH3 pH2 pH1 pH0 VALORE1 VALORE0 START FINE_OPERAZIONE
+.outputs PH_FINALE7 PH_FINALE6 PH_FINALE5 PH_FINALE4 PH_FINALE3 PH_FINALE2 \
+PH_FINALE1 PH_FINALE0 NCLK7 NCLK6 NCLK5 NCLK4 NCLK3 NCLK2 NCLK1 NCLK0 FINE
+.latch    select7 registered7 re NIL 0
+.latch    select6 registered6 re NIL 0
+.latch    select5 registered5 re NIL 0
+.latch    select4 registered4 re NIL 0
+.latch    select3 registered3 re NIL 0
+.latch    select2 registered2 re NIL 0
+.latch    filtered1 registered1 re NIL 0
+.latch    filtered0 registered0 re NIL 0
+.latch    count7 memo7 re NIL 0
+.latch    count6 memo6 re NIL 0
+.latch    count5 memo5 re NIL 0
+.latch    count4 memo4 re NIL 0
+.latch    count3 memo3 re NIL 0
+.latch    count2 memo2 re NIL 0
+.latch    count1 memo1 re NIL 0
+.latch    count0 memo0 re NIL 0
+.names FINE_OPERAZIONE select7 PH_FINALE7
+11 1
+.names FINE_OPERAZIONE select6 PH_FINALE6
+11 1
+.names FINE_OPERAZIONE select5 PH_FINALE5
+11 1
+.names FINE_OPERAZIONE select4 PH_FINALE4
+11 1
+.names FINE_OPERAZIONE select3 PH_FINALE3
+11 1
+.names FINE_OPERAZIONE select2 PH_FINALE2
+11 1
+.names FINE_OPERAZIONE filtered1 PH_FINALE1
+11 1
+.names FINE_OPERAZIONE filtered0 PH_FINALE0
+11 1
+.names FINE_OPERAZIONE count7 NCLK7
+11 1
+.names FINE_OPERAZIONE count6 NCLK6
+11 1
+.names FINE_OPERAZIONE count5 NCLK5
+11 1
+.names FINE_OPERAZIONE count4 NCLK4
+11 1
+.names FINE_OPERAZIONE count3 NCLK3
+11 1
+.names FINE_OPERAZIONE count2 NCLK2
+11 1
+.names FINE_OPERAZIONE count1 NCLK1
+11 1
+.names FINE_OPERAZIONE count0 NCLK0
+11 1
+.names filtered7 filtered6 filtered3 filtered2 filtered1 filtered0 [281] [293] \
+FINE
+01-----1 1
+1000000- 1
+.names START pH7 registered7 filtered7
+11- 1
+0-1 1
+.names START pH6 registered6 filtered6
+11- 1
+0-1 1
+.names START pH5 registered5 filtered5
+11- 1
+0-1 1
+.names START pH4 registered4 filtered4
+11- 1
+0-1 1
+.names START pH3 registered3 filtered3
+11- 1
+0-1 1
+.names START pH2 registered2 filtered2
+11- 1
+0-1 1
+.names START pH1 registered1 filtered1
+11- 1
+0-1 1
+.names START pH0 registered0 filtered0
+11- 1
+0-1 1
+.names VALORE0 filtered7 filtered6 select6 select7
+110- 1
+-111 1
+01-0 1
+0001 1
+1010 1
+.names VALORE0 filtered6 c5 [281] [284] [287] select6
+-1--1- 1
+-1-1-1 1
+-01--0 1
+-10--0 1
+00-00- 1
+.names filtered5 filtered4 select4 select3 c5 [281] [286] [293] select5
+-----00- 1
+--1----1 1
+1---0-1- 1
+0100---- 1
+.names VALORE0 filtered4 filtered3 select2 [284] [287] [288] select4
+-1--1-- 1
+-1----1 1
+00--0-- 1
+-10--0- 1
+-010-0- 1
+.names filtered3 [288] select3
+11 1
+00 1
+.names VALORE1 filtered2 [282] [287] select2
+0-0- 1
+-1-1 1
+.names START memo7 memo6 count6 count7
+-1-1 1
+010- 1
+0010 1
+.names START memo6 memo5 count5 count6
+-1-1 1
+010- 1
+0010 1
+.names START memo5 memo4 count4 [283] count5
+-1-1- 1
+010-- 1
+-0-00 1
+.names [283] [290] count4
+01 1
+10 1
+.names START count0 [103] [294] count3
+-11- 1
+0-01 1
+.names START FINE memo2 memo1 count1 count0 count2
+--1-1- 1
+0-10-- 1
+-001-0 1
+.names START FINE memo1 [285] [295] count1
+-000- 1
+0-1-1 1
+.names FINE [285] count0
+01 1
+10 1
+.names filtered3 filtered2 [293] c5
+111 1
+.names memo3 memo2 memo1 [285] [103]
+1110 1
+.names filtered5 filtered4 [281]
+1- 1
+-1 1
+.names VALORE0 filtered2 [282]
+0- 1
+-1 1
+.names START memo4 [283]
+1- 1
+-0 1
+.names VALORE1 VALORE0 filtered3 [284]
+1-- 1
+-01 1
+.names START memo0 [285]
+1- 1
+-0 1
+.names select4 select3 [286]
+0- 1
+-0 1
+.names VALORE1 VALORE0 [287]
+1- 1
+-0 1
+.names VALORE1 [282] [288]
+1- 1
+-0 1
+.names FINE [103] [290]
+1- 1
+-0 1
+.names filtered5 filtered4 [293]
+11 1
+.names memo3 memo2 count2 [294]
+1-- 1
+-10 1
+.names FINE memo0 [295]
+1- 1
+-0 1
+.end
