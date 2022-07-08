@@ -1,0 +1,29 @@
+.model esercizio3
+.inputs i0 i1
+.outputs somma
+
+.start_kiss
+.i 2		#numero di segnali di ingresso
+.o 1		#numero di segnali di uscita
+.s 2		#numero di stati
+.p 8		#numero di transizioni
+.r R		#stato di reset
+
+#tabella delle transizioni
+#(ingressi, stato presente, stato prossimo, uscita)
+00 R R 0
+01 R R 1
+10 R R 1
+11 R C 0
+00 C R 1
+01 C C 0
+10 C C 0
+11 C C 1
+.end_kiss
+
+.code R 0
+.code C 1
+
+.end
+
+

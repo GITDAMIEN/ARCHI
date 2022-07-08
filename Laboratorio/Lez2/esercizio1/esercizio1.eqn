@@ -1,0 +1,4 @@
+INORDER = x y z v;
+OUTORDER = f;
+f = !x*!y*!z*!v + !x*!y*z*!v + !x*y*z*!v + x*y*z*!v + !x*!y*!z*v + x*!y*!z*v
+ + !x*y*!z*v + x*y*!z*v + !x*!y*z*v + x*!y*z*v + !x*y*z*v + x*y*z*v;

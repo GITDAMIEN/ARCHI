@@ -1,0 +1,7 @@
+.model SOTTRATTORE2
+.inputs A1 A0 B1 B0 BIN
+.outputs O1 O0 BOUT
+.subckt SOTTRATTORE A=A0 B=B0 BIN=BIN O=O0 BOUT=C0
+.subckt SOTTRATTORE A=A1 B=B1 BIN=C0 O=O1 BOUT=BOUT
+.end
+.search sottrattore.blif

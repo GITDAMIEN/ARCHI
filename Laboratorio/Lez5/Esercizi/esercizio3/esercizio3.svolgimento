@@ -1,0 +1,25 @@
+sis> read_blif esercizio3.blif
+sis> state_minimize stamina
+Running stamina, written by June Rho, University of Colorado at Boulder
+Number of states in original machine : 2
+Number of states in minimized machine : 2
+sis> state_assign jedi
+Running jedi, written by Bill Lin,  UC Berkeley
+sis> print_stats
+esercizio3      pi= 2   po= 1   nodes=  2       latches= 1
+lits(sop)=  20  #states(STG)=   2
+sis> source script.rugged
+sis> print_stats
+esercizio3      pi= 2   po= 1   nodes=  4       latches= 1
+lits(sop)=  13  #states(STG)=   2
+sis> read_blif esercizio3-codifica-manuale.blif
+sis> stg_to_network
+sis> print_stats
+esercizio3      pi= 2   po= 1   nodes=  2       latches= 1
+lits(sop)=  18  #states(STG)=   2
+sis> source script.rugged
+sis> print_stats
+esercizio3      pi= 2   po= 1   nodes=  3       latches= 1
+lits(sop)=  13  #states(STG)=   2
+sis> quit
+

@@ -1,0 +1,20 @@
+.model ex3
+#Descrivere in formato blif la tabella di verit`a rappresentata dalle seguenti funzioni
+booleane che rappresentano un circuito a 3 bit in ingresso e a 2 bit in uscita:
+U1 = x*y*!z + !x*!y*z + x*!y*z + x*y*z
+U2 = x*!y*!z + !x*y*!z + !x*!y*z + x*y*z
+Simularne il comportamento ed analizzare le statistiche dei circuiti con il comando print stats.
+
+.input x y z
+.output u1 u2
+.names x y z u1
+001 1
+101 1
+110 1
+111 1
+.names x y z u2
+001 1
+010 1
+100 1
+111 1
+.end

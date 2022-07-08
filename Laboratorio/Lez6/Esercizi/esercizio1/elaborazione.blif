@@ -1,0 +1,21 @@
+.model ELABORAZIONE
+.inputs A1 A0 B1 B0 SEL
+.outputs OUT1 OUT0
+
+# costanti
+.names ZERO
+
+# somma
+.subckt SOMMATORE2 A1=A1 A0=A0 B1=B1 B0=B0 CIN=ZERO O1=S1 O0=S0 COUT=COUT
+
+# differenza
+.subckt SOTTRATTORE2 A1=A1 A0=A0 B1=B1 B0=B0 BIN=ZERO O1=D1 O0=D0 BOUT=BOUT
+
+# selezione tra somma e differenza
+.subckt MUX2 A1=S1 A0=S0 B1=D1 B0=D0 S=SEL O1=OUT1 O0=OUT0
+
+.end
+
+.search sommatore2.blif
+.search sottrattore2.blif
+.search mux2.blif

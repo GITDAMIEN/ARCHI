@@ -1,0 +1,15 @@
+# si assume che i bottoni invio e chiudi siano sostituiti dall'unico
+# segnale APRI che vale 1 per aprire la cassaforte e 0 per chiuderla
+
+.model COMPLESSIVO
+.inputs APRI NUM3 NUM2 NUM1 NUM0
+.outputs APERTA
+
+# unita' di controllo
+.subckt CONTROLLO APRI=APRI UGUALE=UGUALE TIMEOUT=TIMEOUT START=START APERTA=APERTA
+
+# unita' di elaborazione
+.subckt ELABORAZIONE START=START NUM3=NUM3 NUM2=NUM2 NUM1=NUM1 NUM0=NUM0 TIMEOUT=TIMEOUT UGUALE=UGUALE
+.end
+.search controllo_sintetizzata.blif
+.search elaborazione.blif

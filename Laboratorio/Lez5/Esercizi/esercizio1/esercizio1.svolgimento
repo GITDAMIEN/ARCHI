@@ -1,0 +1,168 @@
+[quaglia@belbo circuiti-sequenziali]$ sis
+UC Berkeley, SIS 1.3
+        (compiled 25-Jan-02 at 10:59 AM)
+sis> read_blif esercizio1.blif
+sis> print_stats
+esercizio1      pi= 2   po= 2   nodes=  2       latches= 0
+lits(sop)=   0  #states(STG)=   9
+sis> state_minimize stamina
+Running stamina, written by June Rho, University of Colorado at Boulder
+Number of states in original machine : 9
+Number of states in minimized machine : 7
+sis> print_stats
+esercizio1      pi= 2   po= 2   nodes=  2       latches= 0
+lits(sop)=   0  #states(STG)=   7
+
+*************** grazie alla minimizzazione degli stati si e' passati da
+*************** da 9 a 7 stati guadagnando una cella di memoria
+
+sis> state_assign jedi
+Running jedi, written by Bill Lin,  UC Berkeley
+sis> print_stats
+esercizio1      pi= 2   po= 2   nodes=  5       latches= 3
+lits(sop)=  97  #states(STG)=   7
+
+*************** notare il numero di letterali
+
+sis> source -x script.rugged
+sweep; eliminate -1
+simplify -m nocomp
+eliminate -1
+
+sweep; eliminate 5
+simplify -m nocomp
+resub -a
+
+fx
+resub -a; sweep
+
+eliminate -1; sweep
+full_simplify -m nocomp
+sis> print_stats
+esercizio1      pi= 2   po= 2   nodes=  9       latches= 3
+lits(sop)=  57  #states(STG)=   7
+
+*************** l'ottimizzazione della logica combinatoria ha fatto diminuire
+*************** il numero di letterali
+
+sis> write_blif
+.model esercizio1
+.inputs i0 i1
+.outputs o0 o1
+.latch    [6] LatchOut_v2   0
+.latch    [7] LatchOut_v3   1
+.latch    [8] LatchOut_v4   0
+.start_kiss
+.i 2
+.o 2
+.p 28
+.s 7
+.r S1
+00 S0 S1 10
+01 S0 S0 -0
+10 S0 S0 00
+11 S0 S1 11
+00 S1 S1 10
+01 S1 S1 00
+10 S1 S1 11
+11 S1 S1 11
+00 S2 S2 1-
+01 S2 S1 --
+10 S2 S2 -1
+11 S2 S3 --
+00 S3 S3 0-
+01 S3 S0 -1
+10 S3 S4 -0
+11 S3 S1 -0
+00 S4 S5 --
+01 S4 S5 11
+10 S4 S6 00
+11 S4 S1 01
+00 S5 S0 --
+01 S5 S0 -0
+10 S5 S1 01
+11 S5 S2 10
+00 S6 S0 10
+01 S6 S0 --
+10 S6 S3 -1
+11 S6 S4 1-
+.end_kiss
+.latch_order LatchOut_v2 LatchOut_v3 LatchOut_v4
+.code S0 011
+.code S1 010
+.code S2 110
+.code S3 000
+.code S4 001
+.code S5 111
+.code S6 100
+.names LatchOut_v2 LatchOut_v3 LatchOut_v4 [7] o0 [18] [6]
+--10-- 1
+-0---1 1
+11-110 1
+.names i0 i1 LatchOut_v2 LatchOut_v4 [16] [19] [7]
+-----1 1
+0-1--- 1
+-10--- 1
+---11- 1
+.names i0 LatchOut_v2 LatchOut_v3 [6] [7] o0 o1 [16] [18] [19] [8]
+-1------1- 1
+0-0-1----- 1
+---0--00-- 1
+---0-10--0 1
+.names i0 i1 LatchOut_v2 LatchOut_v3 [16] [17] [18] [19] o0
+------1- 1
+---1-0-- 1
+0------1 1
+11-1---- 1
+--101--- 1
+.names i0 i1 LatchOut_v2 LatchOut_v3 o0 [17] o1
+--1-0- 1
+---1-0 1
+1-0-1- 1
+-1-0-1 1
+.names i0 i1 [16]
+0- 1
+-1 1
+.names i0 LatchOut_v4 [17]
+0- 1
+-1 1
+.names i0 LatchOut_v4 [18]
+01 1
+.names i1 LatchOut_v3 [19]
+01 1
+.exdc
+.inputs i0 i1 LatchOut_v2 LatchOut_v3 LatchOut_v4
+.outputs [6] [7] [8] o0 o1
+.names LatchOut_v2 LatchOut_v3 LatchOut_v4 [6]
+101 1
+.names LatchOut_v2 LatchOut_v3 LatchOut_v4 [7]
+101 1
+.names LatchOut_v2 LatchOut_v3 LatchOut_v4 [8]
+101 1
+.names i0 i1 LatchOut_v2 LatchOut_v3 LatchOut_v4 o0
+011-- 1
+0-1-1 1
+--101 1
+1010- 1
+01-11 1
+00-01 1
+101-0 1
+-1110 1
+01-00 1
+10-00 1
+1-000 1
+.names i0 i1 LatchOut_v2 LatchOut_v3 LatchOut_v4 o1
+-110- 1
+--101 1
+0011- 1
+0000- 1
+011-0 1
+-1110 1
+.end
+
+************** notare la presenza della direttiva .exdc che specifica i dont-care-set
+************** cio' e' dovuto al fatto che la FSM descritta nell'esercizio 
+************** e' parzialmente specificata
+
+sis> quit
+[quaglia@belbo circuiti-sequenziali]$

@@ -1,0 +1,9 @@
+.model xnor
+#restituisce 1 se e solo se gli ingressi sono uguali tra loro
+
+.inputs x y
+.outputs z
+.names x y z
+00 1
+11 1
+.end

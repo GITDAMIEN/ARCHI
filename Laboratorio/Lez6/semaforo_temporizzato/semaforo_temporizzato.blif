@@ -1,0 +1,16 @@
+#-------------------------------------------------------------------------
+#   F.Fummi, M.G.Sami, C.Silvano, "Progettazione Digitale", MacGrawHill
+#   11.4.2 semaforo temporizzato - File : semaforo_temporizzato.blif
+#-------------------------------------------------------------------------
+.model SEMAFORO_TEMPORIZZATO
+.inputs TRAFFICONS TRAFFICOEO
+.outputs LUCENS LUCEEO
+
+# unita' di controllo
+.subckt CONTROLLO TRAFFICONS=TRAFFICONS TRAFFICOEO=TRAFFICOEO FINE=FINE LUCENS=LUCENS LUCEEO=LUCEEO INIZIO=INIZIO
+
+# unita' di elaborazione
+.subckt ELABORAZIONE INIZIO=INIZIO FINE=FINE
+.end
+.search controllo.blif
+.search elaborazione.blif

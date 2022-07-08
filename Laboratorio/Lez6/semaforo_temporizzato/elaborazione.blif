@@ -1,0 +1,57 @@
+#-------------------------------------------------------------------------
+#   F.Fummi, M.G.Sami, C.Silvano, "Progettazione Digitale", MacGrawHill
+#   11.4.2  - File : elaborazione.blif
+#-------------------------------------------------------------------------
+.model ELABORAZIONE
+.inputs INIZIO
+.outputs FINE
+
+# costanti
+.names ZERO
+
+.subckt	COSTANTE0 O2=C02 O1=C01 O0=C00
+.subckt	COSTANTE1 O2=C05 O1=C04 O0=C03
+.subckt	COSTANTE7 O2=C08 O1=C07 O0=C06
+
+# selezione tra 0 ed il valore corrente del contatore
+.subckt MUX3 A2=C02 A1=C01 A0=C00 B2=S2 B1=S1 B0=S0 S=INIZIO O2=M2 O1=M1 O0=M0
+
+# memorizza il valore del contatore 
+.subckt REGISTRO3 A2=M2 A1=M1 A0=M0 O2=R2 O1=R1 O0=R0
+
+# incrementa 1
+.subckt SOMMATORE3 A2=R2 A1=R1 A0=R0 B2=C05 B1=C04 B0=C03 CIN=ZERO O2=S2 O1=S1 O0=S0 COUT=COUT
+
+# verifica uguaglianza a 7
+.subckt UGUALE3 A2=R2 A1=R1 A0=R0 B2=C08 B1=C07 B0=C06 O=FINE
+.end
+
+.model COSTANTE0
+.outputs O2 O1 O0
+.names O2
+.names O1
+.names O0
+.end
+
+.model COSTANTE1
+.outputs O2 O1 O0
+.names O2
+.names O1
+.names O0
+1
+.end
+
+.model COSTANTE7
+.outputs O2 O1 O0
+.names O2
+1
+.names O1
+1
+.names O0
+1
+.end
+
+.search registro3.blif
+.search mux3.blif
+.search sommatore3.blif
+.search uguale3.blif

@@ -1,0 +1,64 @@
+.model ELABORAZIONE
+.inputs START NUM3 NUM2 NUM1 NUM0
+.outputs TIMEOUT UGUALE
+
+# costanti
+.names ZERO
+
+.subckt	COSTANTE0 O1=C01 O0=C00
+.subckt	COSTANTE1 O1=C02 O0=C03
+.subckt	COSTANTE3 O1=C04 O0=C05
+.subckt	COSTANTE6 O3=C09 O2=C08 O1=C07 O0=C06
+
+# selezione tra 0 ed il valore corrente del contatore
+.subckt MUX2 A1=C01 A0=C00 B1=S1 B0=S0 S=START O1=M1 O0=M0
+
+# memorizza il valore del contatore 
+.subckt REGISTRO2 A1=M1 A0=M0 O1=R1 O0=R0
+
+# incrementa 1
+.subckt SOMMATORE2 A1=R1 A0=R0 B1=C02 B0=C03 CIN=ZERO O1=S1 O0=S0 COUT=COUT
+
+# verifica uguaglianza a 3
+.subckt UGUALE2 A1=R1 A0=R0 B1=C04 B0=C05 O=TIMEOUT
+
+# verifica uguaglianza a 0110
+.subckt UGUALE4 A3=NUM3 A2=NUM2 A1=NUM1 A0=NUM0 B3=C09 B2=C08 B1=C07 B0=C06 O=UGUALE
+.end
+
+.model COSTANTE0
+.outputs O1 O0
+.names O1
+.names O0
+.end
+
+.model COSTANTE1
+.outputs O1 O0
+.names O1
+.names O0
+1
+.end
+
+.model COSTANTE3
+.outputs O1 O0
+.names O1
+1
+.names O0
+1
+.end
+
+.model COSTANTE6
+.outputs O3 O2 O1 O0
+.names O3
+.names O2
+1
+.names O1
+1
+.names O0
+.end
+
+.search registro2.blif
+.search mux2.blif
+.search sommatore2.blif
+.search uguale2.blif
+.search uguale4.blif

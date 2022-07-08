@@ -1,0 +1,20 @@
+sis> read_blif controllo.blif
+sis> state_minimize stamina
+Running stamina, written by June Rho, University of Colorado at Boulder
+Number of states in original machine : 2
+Number of states in minimized machine : 2
+sis> state_assign jedi
+Running jedi, written by Bill Lin,  UC Berkeley
+sis> print_stats
+CONTROLLO       pi= 3   po= 2   nodes=  3       latches= 1
+lits(sop)=  14  #states(STG)=   2
+sis> source script.rugged
+sis> print_stats
+CONTROLLO       pi= 3   po= 2   nodes=  3       latches= 1
+lits(sop)=   8  #states(STG)=   2
+sis> write_blif controllo_sintetizzata.blif
+
+********************* controllo_sintetizzata.blif va scritto nella direttiva .search
+********************* di complessivo.blif 
+
+sis> quit
